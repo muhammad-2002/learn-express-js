@@ -370,3 +370,210 @@
 // app.listen(3000, () => {
 //     console.log('Listening on port 3000');
 // });
+
+
+
+
+///////////////////////////////////Middleware ////////////////////////////////////////////////
+
+// const express = require('express');
+// const app = express();
+
+// const myMiddleware =(req,res,next)=>{
+//     console.log('This ia a Middleware');
+//     next();
+
+// }
+// app.use(myMiddleware)
+
+// const myMiddleware1 =(req,res,next)=>{
+//     console.log('This ia a Middleware -1');
+//     next();
+
+// }
+// app.use(myMiddleware1)
+
+
+// app.get('/about', (req, res) => {
+//     res.send('This is a about Url')
+
+// });
+
+// app.listen(3000, () => {
+//     console.log('Listening on port 3000');
+// })
+
+
+// Logger application level
+
+// const express = require('express');
+// const app = express();
+
+// const logger =(req,res,next)=>{
+//     console.log(`${new Date(Date.now()).toDateString()} - ${req.method} - ${req.ip} ---- ${req.originalUrl} --- ${req.url}`);
+//     next();
+
+// }
+// app.use(logger)
+
+
+// app.get('/about', (req, res) => {
+//     res.send('This is a about Url')
+
+// });
+
+// app.listen(3000, () => {
+//     console.log('Listening on port 3000');
+// })
+
+//Router level Middleware
+
+// const express = require('express');
+// const app = express();
+// const adminRouter = express.Router();
+
+// const logger =(req,res,next)=>{
+//     console.log(`${new Date(Date.now()).toDateString()} - ${req.method} - ${req.ip} - ${req.originalUrl} - ${req.url}`);
+//     next();
+
+// }
+// adminRouter.use(logger)
+
+// adminRouter.get('/Dashboard',(req,res)=>{
+//     res.send('Dashboard')
+
+// })
+// app.use('/admin',adminRouter)
+
+
+// app.get('/about', (req, res) => {
+//     res.send('This is a about Url')
+
+// });
+
+// app.listen(3000, () => {
+//     console.log('Listening on port 3000');
+// })
+
+// third party level middleware(cookie parser middleware)
+
+//Third party middleware
+// const express = require('express');
+// const app = express();
+// const adminRouter = express.Router();
+// const cookieParser = require('cookie-parser')
+
+
+// const logger =(req,res,next)=>{
+//     console.log(`${new Date(Date.now()).toDateString()} - ${req.method} - ${req.ip} - ${req.originalUrl} - ${req.url}`);
+//     next();
+
+// }
+// adminRouter.use(logger)
+
+// adminRouter.get('/Dashboard',(req,res)=>{
+//     res.send('Dashboard')
+
+// })
+// app.use(cookieParser)
+// app.use('/admin',adminRouter)
+
+
+// app.get('/about', (req, res) => {
+//     res.send('This is a about Url')
+
+// });
+
+// app.listen(3000, () => {
+//     console.log('Listening on port 3000');
+// })
+
+
+//built-in middleware(app.use(express.json()))
+
+
+// Error Handling Middleware 
+
+// const express = require('express');
+// const app = express();
+// const adminRouter = express.Router();
+
+// const logger =(req,res,next)=>{
+//     console.log(`${new Date(Date.now()).toDateString()} - ${req.method} - ${req.ip} - ${req.originalUrl} - ${req.url}`);
+//     throw new Error ('This an Error')
+
+// }
+// adminRouter.use(logger)
+
+// adminRouter.get('/Dashboard',(req,res)=>{
+//     res.send('Dashboard')
+
+// })
+// app.use('/admin',adminRouter)
+
+
+// app.get('/about', (req, res) => {
+//     res.send('This is a about Url')
+
+// });
+
+// const errorMiddleware=(err,req,res,next)=>{
+//     console.log(err.message)
+//     res.status(500).send('This is a server side Error')
+
+// }
+// adminRouter.use(errorMiddleware)
+
+
+// app.listen(3000, () => {
+//     console.log('Listening on port 3000');
+// })
+
+
+//Configure MiddleWare(advanced)
+
+// const express = require('express');
+// const app = express();
+// const adminRouter = express.Router();
+
+
+
+// const loogerWrapper =(Option)=>{
+//     return function (req,res,next){
+//         if(Option.log){
+//             console.log(`${new Date(Date.now()).toDateString()} - ${req.method} - ${req.ip} - ${req.originalUrl} - ${req.url}`);
+//             next();
+        
+//         }
+//         else{
+//             throw new Error('faild to log')
+//         }
+
+//     }
+// }
+// adminRouter.use(loogerWrapper({log:false}))
+
+// adminRouter.get('/Dashboard',(req,res)=>{
+//     res.send('Dashboard')
+
+// })
+// app.use('/admin',adminRouter)
+
+
+// app.get('/about', (req, res) => {
+//     res.send('This is a about Url')
+
+// });
+
+// const errorMiddleware=(err,req,res,next)=>{
+//     console.log(err.message)
+//     res.status(500).send('This is a server side Error')
+
+// }
+// adminRouter.use(errorMiddleware)
+
+
+// app.listen(3000, () => {
+//     console.log('Listening on port 3000');
+// })
+
